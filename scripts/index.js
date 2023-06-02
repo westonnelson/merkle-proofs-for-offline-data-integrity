@@ -7,24 +7,18 @@ const ethers = require('ethers')
 // Storing the data like this makes it easy for the Solidity code to
 // understand it. This saves us a lot of processing compared to the naive
 // solution of using JSON
-const dataArray = [
-    0x0BAD0010n,
-    0x60A70020n,
-    0xBEEF0030n,
-    0xDEAD0040n,
-    0xCA110050n,
-    0x0E660060n,
-    0xFACE0070n,
-    0xBAD00080n,
-    0x060D0091n
-]
+let claimingAddresses = [
+    "0xD131F1BcDd547e067Af447dD3C36C99d6be9FdEB",
+    "0xcD0b087E113152324FCA962488B4d9BeB6f4CaF6"
+  ];
+
 
 // The array of hash values, as BigInts 
 //
 // In this case it's just the data array.
 // For more complicated data representation it might be necessary to
 // hash the data before calculating Merkle values.
-const hashArray = dataArray; 
+const hashArray = claimingAddresses; 
 
 
 // Symetrical hash of a pair so we won't care if the order is reversed.
@@ -124,7 +118,7 @@ const verifyMerkleProof = (root, nValueHash, proof) => {
 
 
 
-const itemProved = 5
+const itemProved = 0
 const proof = getMerkleProof(hashArray, itemProved)
 console.log(`Merkle proof for item ${itemProved}: ${proof}`)
 
